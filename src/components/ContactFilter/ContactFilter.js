@@ -1,34 +1,27 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
 import debounce from 'lodash.debounce'
 
 import { StyledContactFilter } from './StyledComponrnts'
 
-class ContactFilter extends Component{
-  state = {
-    filter: ''
+const ContactFilter = props => {
+
+  const sendFilterQueryToApp = debounce(props.onFilter, 300);
+
+  const onFilterChange = (e) => {
+    sendFilterQueryToApp(e.target.value.toLowerCase().trim());
   }
 
-  debouncedOnFilter = debounce(this.props.onFilter, 300);
-
-  onFilterChange = (e) => {
-    this.setState({filter: e.target.value});
-    // debounce(() => this.props.onFilter(e.target.value), 300);
-    this.debouncedOnFilter(e.target.value);
-  }
-
-  render() {
     return (
       <StyledContactFilter>
         <h3>Find contacts by name</h3>
         <input
           type="text"
           name="filter"
-          value={this.state.filter}
-          onChange={this.onFilterChange}
+          value={props.filter}
+          onChange={onFilterChange}
         />
       </StyledContactFilter>
     )
-  }
 }
 
 export default ContactFilter;

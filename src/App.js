@@ -1,4 +1,4 @@
-// import data from './data/data.json'
+import initialContacts from './data/initialContacts.json'
 
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
@@ -6,28 +6,27 @@ import { v4 as uuidv4 } from 'uuid';
 import ContactsList from './components/ContactsList'
 import ContactInputForm from './components/ContactInputForm'
 import ContactFilter from './components/ContactFilter'
-import FilteredContact from './components/FilteredContact';
+// import FilteredContact from './components/FilteredContact';
 import Section from './components/Section'
 import { Container } from './components';
 
-const initialContacts = [
-  {name: 'Adrian', phone: 11, id: '1'}, {name: 'Jacob Mercer', phone: 22, id: '2'}, {name: "Charles de Batz de Castelmore d'Artagnan", phone: 33, id: '3'}
-]
+// const initialContacts = initialContacts;
 
 class App extends Component {
   state = {
     contacts: initialContacts,
-    name: ''
+    filter: ''
   };
 
-  onFormSubmit = newContact => {
+  addNewContact = newContact => {
     this.setState(prevState => {
 
-      const contactNameAlreadyExist = this.state.contacts.find(contact => contact.name === newContact.name)
+      const isNameAlreadyExist = contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
+      const contactNameAlreadyExist = this.state.contacts.find(isNameAlreadyExist)
 
       if (contactNameAlreadyExist) {
         alert(`${newContact.name} is already in contacts!`);
-        return ;
+        return
       }
 
       newContact.id = uuidv4();
@@ -37,10 +36,14 @@ class App extends Component {
     });
   };
 
-  onFilter = filterByName => {
+  setFilter = nameToFilter => {
     this.setState(prevState => {
-      return { ...prevState, name: filterByName}
+      return { ...prevState, filter: nameToFilter}
     })
+  }
+
+  handleDel = contactName => {
+    console.log(contactName);
   }
 
   render() {
@@ -48,7 +51,7 @@ class App extends Component {
       <>
         <Section title='Phonebook'>
           <Container>
-            <ContactInputForm onSubmit={this.onFormSubmit}/>
+            <ContactInputForm onSubmit={this.addNewContact}/>
           </Container>
         </Section>
 
@@ -56,15 +59,21 @@ class App extends Component {
           <Container>
             <ContactFilter
               contacts={this.state.contacts}
-              onFilter={this.onFilter}
+              onFilter={this.setFilter}
             />
-            {this.state.name && (
-              <FilteredContact
+
+              {/*<FilteredContact*/}
+              {/*  contacts={this.state.contacts}*/}
+              {/*  name={this.state.name}*/}
+              {/*/>*/}
+
+
+              <ContactsList
                 contacts={this.state.contacts}
-                name={this.state.name}
+                handleDel={this.handleDel}
+                filter={this.state.filter}
               />
-            )}
-            {!this.state.name && <ContactsList contacts={this.state.contacts}/>}
+
           </Container>
         </Section>
       </>

@@ -2,9 +2,9 @@ import { StyledFilteredContact } from "./StyledComponents";
 import ContactsList from "../ContactsList";
 import React from "react";
 
-const FilteredContact = (props) => {
+const FilteredContact = ({ contacts, name }) => {
 
-  const filteredNames = props.contacts.filter( contact => contact.name.toLowerCase().includes(props.name.toLowerCase()));
+  const filteredNames = contacts.filter( contact => contact.name.toLowerCase().includes(name.toLowerCase()));
 
   return (
     <StyledFilteredContact>
