@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledContactInputForm = styled.div`
+export const StyledContactInputForm = styled.form `
 
 `;
 
