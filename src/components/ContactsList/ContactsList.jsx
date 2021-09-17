@@ -7,7 +7,14 @@ class ContactsList extends Component {
   render() {
     return (
       <StyledList>
-        { this.props.contacts.map(contact => <ListItem key={contact.id} contact={contact.name}/>) }
+        { this.props.contacts.map(contact => (
+          <ListItem
+            key={contact.id}
+            contact={contact.name}
+            phone={contact.phone}
+          />
+        ))
+        }
       </StyledList>
     )
   }
