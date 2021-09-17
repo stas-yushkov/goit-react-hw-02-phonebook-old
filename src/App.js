@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import ContactsList from './components/ContactsList'
 import ContactInputForm from './components/ContactInputForm'
 import ContactFilter from './components/ContactFilter'
+import FilteredContact from './components/FilteredContact';
 import Section from './components/Section'
 import { Container } from './components';
 
@@ -29,7 +30,6 @@ class App extends Component {
   };
 
   onFilter = filterByName => {
-    console.log(filterByName);
     this.setState(prevState => {
       return { ...prevState, name: filterByName}
     })
@@ -50,8 +50,13 @@ class App extends Component {
               contacts={this.state.contacts}
               onFilter={this.onFilter}
             />
-
-            <ContactsList contacts={this.state.contacts}/>
+            {this.state.name && (
+              <FilteredContact
+                contacts={this.state.contacts}
+                name={this.state.name}
+              />
+            )}
+            {!this.state.name && <ContactsList contacts={this.state.contacts}/>}
           </Container>
         </Section>
       </>
