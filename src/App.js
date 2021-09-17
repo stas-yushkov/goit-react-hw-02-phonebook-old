@@ -42,8 +42,12 @@ class App extends Component {
     })
   }
 
-  handleDel = contactName => {
-    console.log(contactName);
+  handleDel = contactId => {
+    const filteredArray = this.state.contacts.filter(contact => contact.id !== contactId);
+    this.setState(prevState => {
+
+      return { ...prevState, contacts: filteredArray}
+    })
   }
 
   render() {
