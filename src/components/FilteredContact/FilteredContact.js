@@ -4,7 +4,7 @@ import React from "react";
 
 const FilteredContact = (props) => {
 
-  const filteredNames = props.contacts.filter( contact => contact.name.includes(props.name));
+  const filteredNames = props.contacts.filter( contact => contact.name.toLowerCase().includes(props.name.toLowerCase()));
 
   return (
     <StyledFilteredContact>
