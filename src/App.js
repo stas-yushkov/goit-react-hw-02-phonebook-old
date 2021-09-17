@@ -22,6 +22,14 @@ class App extends Component {
 
   onFormSubmit = newContact => {
     this.setState(prevState => {
+
+      const contactNameAlreadyExist = this.state.contacts.find(contact => contact.name === newContact.name)
+
+      if (contactNameAlreadyExist) {
+        alert(`${newContact.name} is already in contacts!`);
+        return ;
+      }
+
       newContact.id = uuidv4();
       const newContactList = {contacts: [ ...prevState.contacts, newContact]}
 
