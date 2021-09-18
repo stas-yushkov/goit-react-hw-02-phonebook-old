@@ -1,38 +1,36 @@
 import React, { Component } from 'react';
 
-import { StyledContactInputForm } from './StyledComponents';
+import { StyledContactInputForm } from './ContactInputForm.styled';
+import { Button } from 'components';
 
 class ContactInputForm extends Component {
   state = {
     name: '',
-    phone: ''
-  }
+    phone: '',
+  };
 
-  handleChange = (e) => {
-    const { name,value } = e.target
-    this.setState({ [name]: value })
-  }
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
 
-  handleSubmit = (e)=> {
+  handleSubmit = e => {
     e.preventDefault();
 
     this.props.onSubmit(this.state);
-    this.reset();
-  }
+    this.resetState();
+  };
 
-  reset = () => {
+  resetState = () => {
     this.setState({
       name: '',
-      phone: ''
-    })
-  }
-
+      phone: '',
+    });
+  };
 
   render() {
     return (
-      <StyledContactInputForm
-        onSubmit={this.handleSubmit}
-      >
+      <StyledContactInputForm onSubmit={this.handleSubmit}>
         <label>
           Name
           <input
@@ -59,14 +57,10 @@ class ContactInputForm extends Component {
           />
         </label>
 
-        <button
-          type="submit"
-        >
-          Add
-        </button>
+        <Button type="submit">Add</Button>
       </StyledContactInputForm>
-    )
+    );
   }
 }
 
-export  default ContactInputForm;
+export { ContactInputForm };

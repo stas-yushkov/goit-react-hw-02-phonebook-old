@@ -1,1 +1,1 @@
-export { default } from './ContactInputForm'
+export { ContactInputForm } from './ContactInputForm'

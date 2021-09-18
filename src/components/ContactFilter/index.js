@@ -1,1 +1,1 @@
-export { default } from './ContactFilter'
+export { ContactFilter } from './ContactFilter';
