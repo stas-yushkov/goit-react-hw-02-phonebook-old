@@ -1,8 +1,8 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faUser } from '@fortawesome/free-solid-svg-icons';
 
-import { Button } from 'components/';
+import { Button } from 'components';
 
 import {
   StyledListItem,
@@ -11,27 +11,34 @@ import {
   Contact,
 } from './StyledListItem';
 
-const ListItem = props => {
-  const handleDel = () => props.handleDel(props.id);
+const ListItem = ({ contact, phone, id, handleDel }) => {
+  const handleDelete = () => handleDel(id);
 
   return (
     <StyledListItem>
       <Contact>
         <ContactName>
           <FontAwesomeIcon icon={faUser} />
-          {props.contact}
+          {contact}
         </ContactName>
 
         <ContactPhone>
           <FontAwesomeIcon icon={faPhone} />
-          {props.phone}
+          {phone}
         </ContactPhone>
       </Contact>
-      <Button type="button" onClick={handleDel}>
+      <Button type="button" onClick={handleDelete}>
         Delete
       </Button>
     </StyledListItem>
   );
+};
+
+ListItem.propTypes = {
+  contact: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  handleDel: PropTypes.func.isRequired,
 };
 
 export default ListItem;

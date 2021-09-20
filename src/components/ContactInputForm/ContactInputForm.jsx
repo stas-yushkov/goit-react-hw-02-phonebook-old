@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import { StyledContactInputForm } from './ContactInputForm.styled';
 import { Button } from 'components';
+import { StyledContactInputForm } from './ContactInputForm.styled';
 
 class ContactInputForm extends Component {
   state = {
@@ -21,12 +22,11 @@ class ContactInputForm extends Component {
     this.resetState();
   };
 
-  resetState = () => {
+  resetState = () =>
     this.setState({
       name: '',
       phone: '',
     });
-  };
 
   render() {
     return (
@@ -62,5 +62,9 @@ class ContactInputForm extends Component {
     );
   }
 }
+
+ContactInputForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export { ContactInputForm };

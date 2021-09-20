@@ -69,7 +69,7 @@ class App extends Component {
         <Section title="Contacts">
           <Container>
             <ContactFilter
-              contacts={this.state.contacts}
+              filter={this.state.filter}
               onFilter={this.setFilter}
             />
 

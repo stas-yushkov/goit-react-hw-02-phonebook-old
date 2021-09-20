@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import ListItem from './ListItem/ListItem';
 
 import { StyledList } from './ContactsList.styled';
@@ -16,6 +17,11 @@ const ContactsList = ({ contacts, handleDel }) => {
       ))}
     </StyledList>
   );
+};
+
+ContactsList.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  handleDel: PropTypes.func.isRequired,
 };
 
 export { ContactsList };
