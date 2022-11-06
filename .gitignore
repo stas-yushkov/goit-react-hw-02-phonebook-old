@@ -38,7 +38,7 @@ bower_components
 ../.husky/build/Release
 
 # Dependency directories
-copy goit-react-hw-02-phonebook/node_modules/
+copy goit-react-hw-02-phonebook-old/node_modules/
 jspm_packages/
 
 # TypeScript v1 declaration files

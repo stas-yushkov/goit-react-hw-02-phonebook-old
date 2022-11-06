@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-02-phonebook",
+  "name": "goit-react-hw-02-phonebook-old",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://stas-yushkov.github.io/goit-react-hw-02-phonebook",
+  "homepage": "https://stas-yushkov.github.io/goit-react-hw-02-phonebook-old",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
